@@ -4,6 +4,7 @@
     imdbSearch();
     googleBooksSearch();
     twitterUrlCount();
+    itunes();
 
   })
 })();
@@ -63,6 +64,28 @@ function twitterUrlCount(){
           url: searchUrl
       }).done(function (data) {
           outputArea.append("<li>" + data.url + "(Count:" + data.count + ")</li>")
+      });
+  });
+}
+
+function itunes(){
+
+  var userInput, searchUrl, results;
+  var outputArea = $("div#itunes .results");
+
+  $('#itunesButton').on("click", function(){
+     userInput = $('#itunesInput').val();
+     searchUrl = "https://itunes.apple.com/search?term=" + userInput
+
+      $.ajax({
+          type: "GET",
+          dataType:"jsonp",
+          url: searchUrl
+      }).done(function (data) {
+          results = data.results;
+          results.forEach(function(item){
+            outputArea.append("<li>" + item.artistName + " - " + item.trackName + " <a href='" + item.previewUrl + "'>Preview Song</a></li>")
+          })
       });
   });
 }

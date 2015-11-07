@@ -3,6 +3,7 @@
 - omdb
 - Google books
 - Twitter URL Shared Count
+- iTunes
 
 
 ### Setup
