@@ -57,11 +57,12 @@ function twitterUrlCount(){
      userInput = $('#twitterurlcountInput').val();
      searchUrl = "http://urls.api.twitter.com/1/urls/count.json?url=" + userInput
 
-     $.get(searchUrl, function( data ) {
-       results = data;
-         outputArea.append("<li>" + item.volumeInfo.title + "<br> Pages:" + item.volumeInfo.pageCount + "</li>")
-       })
-     });
-
-  })
+      $.ajax({
+          type: "GET",
+          dataType:"jsonp",
+          url: searchUrl
+      }).done(function (data) {
+          outputArea.append("<li>" + data.url + "(Count:" + data.count + ")</li>")
+      });
+  });
 }

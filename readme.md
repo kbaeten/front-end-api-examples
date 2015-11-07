@@ -11,4 +11,4 @@
 
 ### Issues
 
-- CORS Issues with Twitter URL Shared Counter
+- (FIXED)CORS Issues with Twitter URL Shared Counter
