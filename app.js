@@ -3,7 +3,6 @@
 
     imdbSearch();
     googleBooksSearch();
-    twitterUrlCount();
     itunes();
 
   })
@@ -49,25 +48,6 @@ function googleBooksSearch(){
   })
 }
 
-function twitterUrlCount(){
-
-  var userInput, searchUrl, results;
-  var outputArea = $("div#twitterurlcount .results");
-
-  $('#twitterurlcountButton').on("click", function(){
-     userInput = $('#twitterurlcountInput').val();
-     searchUrl = "http://urls.api.twitter.com/1/urls/count.json?url=" + userInput
-
-      $.ajax({
-          type: "GET",
-          dataType:"jsonp",
-          url: searchUrl
-      }).done(function (data) {
-          outputArea.append("<li>" + data.url + "(Count:" + data.count + ")</li>")
-      });
-  });
-}
-
 function itunes(){
 
   var userInput, searchUrl, results;
@@ -81,7 +61,7 @@ function itunes(){
           type: "GET",
           dataType:"jsonp",
           url: searchUrl
-      }).done(function (data) {
+      }).then(function (data) {
           results = data.results;
           results.forEach(function(item){
             outputArea.append("<li>" + item.artistName + " - " + item.trackName + " <a href='" + item.previewUrl + "'>Preview Song</a></li>")
