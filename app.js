@@ -20,8 +20,9 @@ function imdbSearch(){
 
      $.get(searchUrl, function( data ) {
        results = data.Search;
-       console.log(results);
+      //  console.log(results);
        results.forEach(function(item){
+         console.log(item);
          outputArea.append("<p>" + item.Title + "</p>")
        })
      });
