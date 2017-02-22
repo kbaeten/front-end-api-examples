@@ -20,6 +20,7 @@ function imdbSearch(){
 
      $.get(searchUrl, function( data ) {
        results = data.Search;
+       console.log(results);
        results.forEach(function(item){
          outputArea.append("<p>" + item.Title + "</p>")
        })
@@ -40,6 +41,7 @@ function googleBooksSearch(){
 
      $.get(searchUrl, function( data ) {
        results = data.items;
+       console.log(results);
        results.forEach(function(item){
          outputArea.append("<li>" + item.volumeInfo.title + "<br> Pages:" + item.volumeInfo.pageCount + "</li>")
        })
@@ -63,6 +65,7 @@ function itunes(){
           url: searchUrl
       }).then(function (data) {
           results = data.results;
+          console.log(results);
           results.forEach(function(item){
             outputArea.append("<li>" + item.artistName + " - " + item.trackName + " <a href='" + item.previewUrl + "'>Preview Song</a></li>")
           })
